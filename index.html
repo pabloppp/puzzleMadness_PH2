@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>PUZZLE Time</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+	<script src="functions.js" type="text/javascript" charset="utf-8"></script>
+	<script src="app.js" type="text/javascript" charset="utf-8"></script>
+
+
+</head>
+<body>
+<header>
+	<h1>Puzzle Madness</h1>
+	<ul id="tabs" class="tabs">
+		<li class="medio" onclick="setTab(0)">INICIO</li><li class="medio" onclick="setTab(1)">PUZZLE</li>		
+	</ul>
+</header>
+
+<div class="main">
+	<div id="splash" class="splash"></div>
+	<div id="tabcontainer" class="tabcontainer">
+		<!-- TAB #1 -->
+		<div class="center">
+			<h2 id="instrucciones">Selecciona una imagen:</h2>
+			<button onclick="loadimage()" id="openbutton">ABRIR</button>
+			<input id="openimage" type="file" onchange="imageloaded()" hidden/>
+			<br><br>
+			<img id="loadedimg" class="loadedimg" onclick="loadimage()">
+			<br>
+		</div>
+		<!-- TAB #2 -->
+		<div>
+			<div class="puzzleholder">
+				<canvas class="puzzle" id="puzzle" width="480px" height="360px">
+					
+				</canvas><br>
+				<button class="check" id="check"><i class="fa fa-search"></i> VERIFICAR</button><br>
+				<p><b id="counter">0</b> movimientos</p>
+			</div>
+			<div id="buttonup" class="buttonup" onclick="showhub()">
+				<i class="fa fa-caret-up one"></i>
+				<i class="fa fa-puzzle-piece two"></i>
+			</div>
+			<div id="piecehub" class="piecehub">
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<footer>
+	<a href="acerca.html">Acerca de...</a>	
+</footer>	
+</body>
+</html>

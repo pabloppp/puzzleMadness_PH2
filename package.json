@@ -1,0 +1,13 @@
+{
+  "name": "Puzzle_Madness",
+  "version": "0.0.1",
+  "description": "Puzzle game",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Babbeberns",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^0.8.0"
+  }
+}
