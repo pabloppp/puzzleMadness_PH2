@@ -96,34 +96,73 @@ window.addEventListener("load", function(){ //SE EJECUTA DESPUES DE CARGAR TODO
 	}
 
 	imageloaded = function(img){
+
 		document.getElementById("openbutton").disabled = true;
 		var inputfile = img || document.getElementById("openimage");
 		var imagefile = inputfile.files[0];	
 		var reader = new FileReader();
-		reader.readAsDataURL(imagefile);
+
+		if(!imagefile.type.match(/image.*/)){
+			functions().toast("Debes seleccionar una imagen", 5000);
+			return;
+		}
+        else reader.readAsDataURL(imagefile);
 		reader.onload = function(event){
+
 			imgurl = event.target.result;
+
+			var image = new Image();
+			image.onload = function(){
+				var canvas = document.getElementById("hiddenCanvas");
+				image.height = 360;
+				image.width = 480;
+				var ctx = canvas.getContext("2d");
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				canvas.width = image.width;
+				canvas.height = image.height;
+				ctx.drawImage(image, 0, 0, image.width, image.height);
+
+				document.getElementById("loadedimg").src = canvas.toDataURL();
+				imgurl = canvas.toDataURL(); 
+
+				document.getElementById("openbutton").innerHTML = "CAMBIAR";
+				document.getElementById("instrucciones").innerHTML = "Ahora selecciona la pestaña 'PUZZLE' y... ¡A jugar!";
+				document.getElementById("openbutton").disabled = false;
+				functions().toast("Imagen cargada con exito", 5000);
+				populatePieces();
+
+			}
+			image.src = imgurl;
+
+			/*imgurl = event.target.result;
 			document.getElementById("loadedimg").src = imgurl;
 			document.getElementById("openbutton").innerHTML = "CAMBIAR";
 			document.getElementById("instrucciones").innerHTML = "Ahora selecciona la pestaña 'PUZZLE' y... ¡A jugar!";
 			document.getElementById("openbutton").disabled = false;
 			functions().toast("Imagen cargada con exito", 5000);
 
-			populatePieces();
+			populatePieces();*/
 
 		};
 	}
 
 	populatePieces = function(){
+		
+
 		var container = document.getElementById("piecehub");
 		container.innerHTML = "";		
-		for(var i = 0; i<6*8;i++){
-			var left = i%6;
-			var top = i/6;
-			var piece = document.createElement("IMG");
-			piece.style.backgroundImage = "url("+imgurl+")";
-			piece.style.backgroundPosition = "-"+(left*60)+"px -"+(top*60)+"px";
-			container.appendChild(piece);
+		for(var i = 0; i<6;i++){ //Y
+
+			for(var j=0;j<8;j++){ //X
+				var left = j;
+				var top = i;
+				var piece = document.createElement("IMG");
+				piece.setAttribute("draggable", "true");
+				piece.style.backgroundImage = "url("+imgurl+")";
+				piece.style.backgroundPosition = "-"+(left*60)+"px -"+(top*60)+"px";
+				container.appendChild(piece);
+			}
+			
 		}
 	}
 
