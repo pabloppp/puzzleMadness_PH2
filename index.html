@@ -22,7 +22,15 @@
 </header>
 
 <div class="main">
+
 	<div id="splash" class="splash"></div>
+
+	<div id="loadingdiv" class="loadingdiv"> <i class="fa fa-circle-o-notch fa-spin"></i> </div>
+
+	<div id="windiv" class="windiv"> <h3>¡HAS GANADO!</h3> <b id="counterwin">0</b> movimientos<br><br>
+		<button class="check" id="check" onClick="rePlay()">VOLVER A JUGAR</button>
+	</div>
+
 	<div id="tabcontainer" class="tabcontainer">
 		<!-- TAB #1 -->
 		<div class="center">
@@ -30,17 +38,17 @@
 			<button onclick="loadimage()" id="openbutton">ABRIR</button>
 			<input id="openimage" type="file" onchange="imageloaded()" hidden/>
 			<br><br>
-			<img id="loadedimg" class="loadedimg" onclick="loadimage()">
+			<img id="loadedimg" class="loadedimg" onclick="loadimage()" src="">
 			<canvas class="hiddenCanvas" id="hiddenCanvas"></canvas>
 			<br>
 		</div>
 		<!-- TAB #2 -->
 		<div>
 			<div class="puzzleholder">
-				<canvas class="puzzle" id="puzzle" width="480px" height="360px">
+				<canvas class="puzzle" id="puzzle" width="480px" height="360px" onClick="addPieza(event)">
 					
 				</canvas><br>
-				<button class="check" id="check"><i class="fa fa-search"></i> VERIFICAR</button><br>
+				<button class="check" id="check" onClick="checkImageData()"><i class="fa fa-search"></i> VERIFICAR</button><br>
 				<p><b id="counter">0</b> movimientos</p>
 			</div>
 			<div id="buttonup" class="buttonup" onclick="showhub()">
@@ -48,6 +56,7 @@
 				<i class="fa fa-puzzle-piece two"></i>
 			</div>
 			<div id="piecehub" class="piecehub">
+
 			</div>
 		</div>
 	</div>

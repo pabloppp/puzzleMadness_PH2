@@ -115,6 +115,7 @@ footer a{
 	bottom: 40px;
 	width: 100%;
 	text-align: center;
+	z-index: 9999999999;
 }
 
 .toast{
@@ -130,6 +131,7 @@ footer a{
 	/*bottom: -50px;*/
 	opacity: 0;
 	border-radius: 999px;
+	z-index: 9999999999;
 }
 
 .toast .close{
@@ -287,12 +289,18 @@ button:hover{
 	opacity: 0;
 }
 
-.piecehub img{
-	display: inline;
+.piecehub div{
+	display: inline-block;
 	height: 60px;
 	width: 60px;
 	background-color: #414141;
 	margin: 0 5px;
+	box-sizing:border-box;
+	z-index: 99;
+}
+
+.piecehub div.selected{
+	border: solid 2px red;
 }
 
 .puzzleholder{
@@ -340,4 +348,60 @@ button.check{
 
 .hiddenCanvas{
 	display: none;
+}
+
+.loadingdiv{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background-color: rgba(0,0,0,0.6);
+	z-index: 999999999999;
+	transition: all 0.5s;
+	text-align: center;
+	vertical-align: middle;
+	visibility: collapse;
+	opacity: 0;
+}
+
+.loadingdiv.show{
+	visibility: visible;
+	opacity: 1;
+}
+
+.loadingdiv i{
+	font-size: 100px;
+	color: white;
+	position: relative;
+	top: calc(50% - 50px);
+}
+
+.windiv{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background-color: rgba(0,0,0,0.9);
+	z-index: 999999999999;
+	transition: all 0.5s;
+	text-align: center;
+	vertical-align: middle;
+	visibility: collapse;
+	opacity: 0;
+	color: white;
+	font-size: 200%;	
+}
+
+.windiv.show{
+	visibility: visible;
+	opacity: 1;
+}
+
+.windiv h3{
+	padding: 0;
+	margin: 0;
+	position: relative;
+	margin-top: 25%;
+}
+
+.windiv button{
+	font-size: 50%;	
 }
