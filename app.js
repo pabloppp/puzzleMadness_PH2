@@ -444,6 +444,26 @@ window.addEventListener("load", function(){ //SE EJECUTA DESPUES DE CARGAR TODO
 		document.getElementById("counterwin").innerHTML = movements;
 	}
 
+	toggleAbout = function(){
+
+		var aboutCont = document.getElementById("aboutContent");
+		if(aboutCont.innerHTML.length <= 15){
+			var xhr= new XMLHttpRequest();
+			xhr.open('GET', 'acerca.html', true);
+			xhr.onreadystatechange= function() {
+			    if (this.readyState!==4) return;
+			    if (this.status!==200) return; // or whatever error handling you want
+			    aboutCont.innerHTML = this.responseText;
+			    document.getElementById("aboutModal").classList.toggle("show");	
+			};
+			xhr.send();
+		}
+		else{
+			document.getElementById("aboutModal").classList.toggle("show");	
+		}
+		
+	}
+
 	rePlay = function(){
 		toggleWin();
 		resetPuzzle();	

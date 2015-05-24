@@ -31,7 +31,7 @@ checkPiece = function(x, y){
 	for(var i=0;i<60;i++){ // y
 		for(var j=0;j<60*4;j += 4){ // x
 			var pos = x*60*4 + j + (y*60+i)*480*4;
-			for(var k=0;k<4;k++){
+			for(var k=0;k<4;k++){ // PARA R, G, B y A
 				if(originalImageData[pos+k] !== puzzleImageData[pos+k]) return true;
 			}
 		}

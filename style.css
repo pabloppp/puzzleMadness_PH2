@@ -405,3 +405,39 @@ button.check{
 .windiv button{
 	font-size: 50%;	
 }
+
+.modal{
+	position: fixed;
+	left: 0;
+	top: 100%;
+	width: 100%;
+	height: 100%;
+	transition: all 0.3s;
+}
+
+.modal.show{
+	top: 0;
+}
+
+.modal .navbar{
+	background-color: #FF5722;
+	width: 100%;
+	height: 40px;
+	color: #fff;  
+}
+
+.modal .navbar i{
+	padding: 10px;
+	font-size: 20px;
+	color: white;
+}
+
+.modal .content{
+	width: 100%;
+	position: absolute;
+	top: 40px;
+	bottom: 0px;
+	background-color: #fff;
+	box-sizing: border-box;
+	padding: 20px;
+}
