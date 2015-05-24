@@ -30,6 +30,8 @@ window.addEventListener("load", function(){ //SE EJECUTA DESPUES DE CARGAR TODO
 		selectedPiece = undefined;
 		imgPieces = [];
 		changeCell = undefined;
+		movements = 0;
+		document.getElementById("counter").innerHTML = movements;
 		puzzle = [];
 		for(var i=0;i<6;i++){
 
@@ -165,7 +167,7 @@ window.addEventListener("load", function(){ //SE EJECUTA DESPUES DE CARGAR TODO
 				canvas.height = image.height;
 				ctx.drawImage(image, 0, 0, image.width, image.height);
 
-				originalData = ctx.getImageData(0, 0, 360, 480);
+				originalData = ctx.getImageData(0, 0, 480, 360);
 
 				document.getElementById("loadedimg").src = canvas.toDataURL();
 				imgurl = canvas.toDataURL(); 
@@ -237,7 +239,7 @@ window.addEventListener("load", function(){ //SE EJECUTA DESPUES DE CARGAR TODO
 			
 		}
 
-		//imgPieces.sort(function(){return Math.random() - 0.5})
+		imgPieces.sort(function(){return Math.random() - 0.5})
 
 		for(var i=0;i<imgPieces.length;i++){
 			container.appendChild(imgPieces[i]);
@@ -376,7 +378,7 @@ window.addEventListener("load", function(){ //SE EJECUTA DESPUES DE CARGAR TODO
 			}
 		}
 
-		puzzleData = ctx.getImageData(0, 0, 360, 480);
+		puzzleData = ctx.getImageData(0, 0, 480, 360);
 
 		ctx.lineWidth = 1;
 
@@ -409,8 +411,6 @@ window.addEventListener("load", function(){ //SE EJECUTA DESPUES DE CARGAR TODO
 	}
 
 	checkImageData = function(){
-		console.log(originalData);
-		console.log(puzzleData);
 		if(w){
 			w.postMessage({original:originalData, puzzle:puzzleData});
 		}

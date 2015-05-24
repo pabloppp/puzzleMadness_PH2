@@ -28,7 +28,7 @@
 	<div id="loadingdiv" class="loadingdiv"> <i class="fa fa-circle-o-notch fa-spin"></i> </div>
 
 	<div id="windiv" class="windiv"> <h3>¡HAS GANADO!</h3> <b id="counterwin">0</b> movimientos<br><br>
-		<button class="check" id="check" onClick="rePlay()">VOLVER A JUGAR</button>
+		<button class="check" onClick="rePlay()">VOLVER A JUGAR</button>
 	</div>
 
 	<div id="tabcontainer" class="tabcontainer">
@@ -38,14 +38,14 @@
 			<button onclick="loadimage()" id="openbutton">ABRIR</button>
 			<input id="openimage" type="file" onchange="imageloaded()" hidden/>
 			<br><br>
-			<img id="loadedimg" class="loadedimg" onclick="loadimage()" src="">
+			<img id="loadedimg" class="loadedimg" onclick="loadimage()" src="file://null" alt="preview">
 			<canvas class="hiddenCanvas" id="hiddenCanvas"></canvas>
 			<br>
 		</div>
 		<!-- TAB #2 -->
 		<div>
 			<div class="puzzleholder">
-				<canvas class="puzzle" id="puzzle" width="480px" height="360px" onClick="addPieza(event)">
+				<canvas class="puzzle" id="puzzle" width="480" height="360" onClick="addPieza(event)">
 					
 				</canvas><br>
 				<button class="check" id="check" onClick="checkImageData()"><i class="fa fa-search"></i> VERIFICAR</button><br>
